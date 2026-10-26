@@ -80,9 +80,9 @@ public class StockLibreriaService {
         List<StockLibreria> toRet = new ArrayList<>();
         try (Connection conn = DBConnector.conexion();
             PreparedStatement toRead = conn.prepareStatement(sql);
-            ResultSet rs = toRead.executeQuery()
         ) {
             toRead.setInt(1, id);
+            ResultSet rs = toRead.executeQuery();
             while (rs.next()) {
                 toRet.add(
                         new StockLibreria(
@@ -94,6 +94,7 @@ public class StockLibreriaService {
                         )
                 );
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

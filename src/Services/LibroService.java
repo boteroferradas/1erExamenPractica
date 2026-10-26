@@ -14,7 +14,7 @@ import Connection.DBConnector;
 
 public class LibroService {
 
-    public static Libro crearLibro(Libro libro) {
+    public static void crearLibro(Libro libro) {
         String sql = "INSERT INTO Libro (titulo, autor, anopublicacion, xenero) VALUES (?,?,?,?)";
         try (Connection conn = DBConnector.conexion();
             PreparedStatement toInsert = conn.prepareStatement(sql)
@@ -26,10 +26,10 @@ public class LibroService {
 
             toInsert.executeUpdate();
 
+            System.out.println("Libro insertado correctamente en la BD");
         } catch (SQLException e) {
             System.out.println("Error al insertar: " + e.getMessage());
         }
-        return null;
     }
 
     public static List<Libro> listarLibros(){
@@ -51,6 +51,7 @@ public class LibroService {
                         )
                 );
             }
+            System.out.println("Libros leidos correctamente de la tabla Libro");
         } catch (SQLException e) {
             System.out.println("Erro ao listar: " + e.getMessage());
         }

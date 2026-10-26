@@ -1,6 +1,8 @@
 package Models;
 
-public class StockLibreria {
+import java.io.Serializable;
+
+public class StockLibreria implements Serializable {
     private int id;
     private int idlibro;
     private double prezocosto;

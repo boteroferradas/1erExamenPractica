@@ -7,7 +7,7 @@ public class DBConnector {
     public static Connection conexion() {
         Connection conn = null;
         try {
-            String url = "jdbc:postgresql://10.0.9.226:5432/postgres";
+            String url = "jdbc:postgresql://localhost:5432/postgres";
             String usuario = "postgres";
             String password = "admin";
             conn = DriverManager.getConnection(url, usuario, password);
